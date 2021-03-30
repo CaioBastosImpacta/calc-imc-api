@@ -1,0 +1,19 @@
+version: '3.4'
+services: 
+  imc-calc-api:
+    image: imc-calc-api
+    restart: always
+    build:
+      context: .
+      dockerfile: app/Dockerfile
+    working_dir: /app
+    environment:
+      TZ: America/Sao_Paulo    
+    ports:
+      - "8081:8081"
+    command: mvn spring-boot:run
+    networks:
+      - udemy-network
+ networks:
+    udemy-network:
+        driver: bridge
